@@ -11,4 +11,9 @@ set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
 set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 
-set(CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++ -static")
+# Workaround for cmake issue #20753
+set(CMAKE_GET_RUNTIME_DEPENDENCIES_PLATFORM "windows+pe") # needed?
+# Need a custom command that sets CR returns?
+set(CMAKE_GET_RUNTIME_DEPENDENCIES_TOOL x86_64-w64-mingw32-objdump)
+
+#set(CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++ -static")
